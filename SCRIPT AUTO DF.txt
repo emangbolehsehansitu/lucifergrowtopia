@@ -1,0 +1,739 @@
+--/////--
+bot = getBot()
+BotInventory = bot:getInventory()
+world = bot:getWorld()
+
+function clearLava()
+   for _, tile in pairs(getTiles()) do
+       while world:getTile(math.floor(getLocal().posx / 32),math.floor(getLocal().posy / 32) + 1).fg == 4 and BotInventory:getItemCount(2) > 0 do
+           bot:findPath(tile.x,tile.y-1)
+           punchbawah()
+           sleep(160)
+           placebawah(2,0,1)
+       end
+   end
+end
+
+function placebawah(itemID,xOffset, yOffset)
+   local player = bot:getWorld():getLocal()
+   local x = math.floor(player.posx / 32) + xOffset
+   local y = math.floor(player.posy / 32) + yOffset
+   bot:place(x, y, itemID)
+end
+
+function plantdirt()
+   for i, tile in ipairs(world:getTiles()) do
+      if 0 == world:getTile(tile.x, tile.y).fg and 0 ~= world:getTile(tile.x, tile.y + 1).fg and world:getTile(tile.x, tile.y + 1).fg ~= SeedID and BotInventory:getItemCount(SeedID) > 0 then
+         bot:findPath(tile.x,tile.y)
+         sleep(PlantDelay)
+         if bot:isInTile(tile.x,tile.y) then
+            bot:place(tile.x,tile.y,SeedID)
+            sleep(PlantDelay)
+            else
+               bot:findPath(tile.x,tile.y)
+               sleep(PlantDelay)
+         if bot:isInTile(tile.x,tile.y) then
+              bot:place(tile.x,tile.y,SeedID)
+              sleep(PlantDelay)
+           end
+        end
+      end
+   end
+end
+function harvest()
+   bot.auto_collect = true
+   for i, tile in ipairs(world:getTiles()) do
+      if tile.fg == SeedID and tile:canHarvest() then 
+         bot:findPath(tile.x,tile.y)
+         bot:hit(tile.x,tile.y)
+         sleep(delayHarvest)
+         if BotInventory:getItemCount(2) == 200 then
+            break
+         end
+      end
+   end
+end
+
+function taruhdirtbikindf()
+   for y = 1,98 do
+      tile = world:getTile(y,22)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,22)
+      if BotInventory:getItemCount(2) == 0 then
+         harvest()
+      elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+         clearjadidf()
+      end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = world:getTile(y,20)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,20)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 1,98 do
+      tile = world:getTile(y,18)
+      while tile.fg == 0 and tile.bg == 0 do
+         bot:findPath(tile.x,tile.y - 1)
+         placebawah(2,0,1)
+         tile = world:getTile(y,18)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = world:getTile(y,16)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,16)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 1,98 do
+      tile = world:getTile(y,14)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,14)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 98,1,-1 do
+      tile = world:getTile(y,12)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,12)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 1,98 do
+      tile = world:getTile(y,10)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,10)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 98,1,-1 do
+      tile = world:getTile(y,8)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,8)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 1,98 do
+      tile = world:getTile(y,6)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,6)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 98,1,-1 do
+      tile = world:getTile(y,4)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,4)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+   end
+   end
+
+   for y = 1,98 do
+      tile = world:getTile(y,2)
+      while tile.fg == 0 and tile.bg == 0 do
+      bot:findPath(tile.x,tile.y - 1)
+      placebawah(2,0,1)
+      tile = world:getTile(y,2)
+         if BotInventory:getItemCount(2) == 0 then
+            harvest()
+         elseif world:getTiles().fg ~= SeedID and BotInventory:getItemCount(2) == 0 then
+            clearjadidf()
+         end
+      end
+   end   
+end
+
+function joinmenggunakanpintu(a,b)
+   sleep(3000)
+    bot:warp(a,b)
+    sleep(3000)
+    duniayangsudahditemukan = tostring(world.name)
+    if duniayangsudahditemukan == "" or duniayangsudahditemukan == "EXIT" then
+    	joinmenggunakanpintu(a,b)
+    end
+    if duniayangsudahditemukan ~= "" or duniayangsudahditemukan ~= "EXIT" then
+        if world:getTile(Botx,Boty).fg == 6 then
+            joinmenggunakanpintu(a,b)
+        end
+    end
+end
+
+function CreateWorld()
+      ::ANJAY::
+      sleep(4000)
+      local lett = "5"
+      local alphabet = "abcdefghijklmnopqrstuvwxyz"
+      local worldkosong = ""
+   
+      for i = 1, lett do
+      local randomindex = math.random(1, #alphabet)
+      local randomletter = alphabet:sub(randomindex,randomindex)
+      worldkosong = worldkosong .. randomletter
+      end
+      getBot():warp(worldkosong)
+      sleep(4000)
+
+   for _,cek in pairs(getBot():getWorld():getTiles()) do
+      if cek.fg == 242 or cek.fg == 9640 or cek.fg == 202 or cek.fg == 204 or cek.fg == 206 or cek.fg == 1796 or cek.fg == 4994 or cek.fg == 7188 or cek.fg == 2408 or cek.fg == 2950 or cek.fg == 4428 or cek.fg == 4802 or cek.fg == 5814 or cek.fg == 5260 or cek.fg == 5980 or cek.fg == 8470 or cek.fg == 10410 or cek.fg == 11550 or cek.fg == 11586 then
+         goto ANJAY
+      end
+      duniayangsudahditemukan = tostring(world.name)
+      if duniayangsudahditemukan == "" or duniayangsudahditemukan == "EXIT" then
+         goto ANJAY
+      end
+      if cek.fg ~= 242 or cek.fg ~= 9640 or cek.fg ~= 202 or cek.fg ~= 204 or cek.fg ~= 206 or cek.fg ~= 1796 or cek.fg ~= 4994 or cek.fg ~= 7188 or cek.fg ~= 2408 or cek.fg ~= 2950 or cek.fg ~= 4428 or cek.fg ~= 4802 or cek.fg ~= 5814 or cek.fg ~= 5260 or cek.fg ~= 5980 or cek.fg ~= 8470 or cek.fg ~= 10410 or cek.fg ~= 11550 or cek.fg ~= 11586 then
+         local function place(itemID,xOffset, yOffset)
+            local player = bot:getWorld():getLocal()
+            local x = math.floor(player.posx / 32) + xOffset
+            local y = math.floor(player.posy / 32) + yOffset
+            bot:place(x, y, itemID)
+        end
+        place(9640,0,-1)
+         break
+      end
+   end
+end
+
+function punchbawah()
+   for hit = 1,Block_Hit do
+      bot:hit(math.floor(getLocal().posx / 32),math.floor(getLocal().posy / 32) + 1)
+      sleep(Delay_Break)
+   end
+end
+
+function punchkiri()
+   for hit = 1,Block_Hit do
+      bot:hit(math.floor(getLocal().posx / 32) - 1,math.floor(getLocal().posy / 32))
+      sleep(Delay_Break)
+   end
+end
+
+function punchkanan()
+   for hit = 1,Block_Hit do
+      bot:hit(math.floor(getLocal().posx / 32) + 1,math.floor(getLocal().posy / 32))
+      sleep(Delay_Break)
+   end
+end
+
+function CekClearSideKanan()
+   for y = 23, 53 do
+      local tile = getBot():getWorld():getTile(99, y)
+
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x, tile.y - 1)
+         punchbawah()
+         tile = getBot():getWorld():getTile(99, y)
+      end
+
+      -- Setelah selesai memeriksa tile di sebelah kanan, periksa apakah ada yang belum bersih
+      if tile.bg ~= 0 or tile.fg ~= 0 then
+         return false -- Ada setidaknya satu tile yang belum bersih
+      end
+   end
+
+   return true -- Semua tile di sebelah kanan sudah bersih
+end
+
+
+-- Fungsi untuk membersihkan sisi kiri
+function CekClearSideKiri()
+   bot.auto_collect = true
+   for y = 23, 53 do
+      tile = getBot():getWorld():getTile(0, y)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x, tile.y - 1)
+         punchbawah()
+      end
+   end
+
+   -- Setelah selesai periksa apakah sebelah kiri sudah bersih
+   for y = 23, 53 do
+      local tileKiri = getBot():getWorld():getTile(0, y)
+      while tileKiri.bg ~= 0 or tileKiri.fg ~= 0 do
+         return false  -- Ada tile yang belum bersih
+      end
+   end
+
+   return true  -- Semua tile di sebelah kiri sudah bersih
+end
+
+function clearjadidf()
+   for y = 99, 1, -1 do
+      tile = getBot():getWorld():getTile(y, 25)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 25) -- Perbarui tile
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+         
+   for y2 = 1, 98 do
+      tile = getBot():getWorld():getTile(y2, 27)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y2, 27) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   -- Perulangan tambahan dari 29 ke 31
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 29)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 29) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   -- Perulangan tambahan dari 1,31 sampai 98,31
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 31)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y, 31) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1  do
+      tile = getBot():getWorld():getTile(y, 33)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 33) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 35)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y, 35) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 37)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 37) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 39)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y, 39) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 41)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 41) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 43)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y, 43) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 45)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         tile = getBot():getWorld():getTile(y, 45) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+                bot:trash(trash, BotInventory:getItemCount(trash))
+                sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 47)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         tile = getBot():getWorld():getTile(y, 47) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+               bot:trash(trash, BotInventory:getItemCount(trash))
+               sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 49)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         clearLava()
+         tile = getBot():getWorld():getTile(y, 49) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+               bot:trash(trash, BotInventory:getItemCount(trash))
+               sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 1, 98 do
+      tile = getBot():getWorld():getTile(y, 51)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x - 1, tile.y)
+         punchkanan()
+         clearLava()
+         tile = getBot():getWorld():getTile(y,51) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+               bot:trash(trash, BotInventory:getItemCount(trash))
+               sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+
+   for y = 98,1,-1 do
+      tile = getBot():getWorld():getTile(y, 53)
+      while tile.bg ~= 0 or tile.fg ~= 0 do
+         bot:findPath(tile.x + 1, tile.y)
+         punchkiri()
+         clearLava()
+         tile = getBot():getWorld():getTile(y, 53) -- Perbarui tile
+         for i, trash in ipairs(trashList) do
+            if BotInventory:getItemCount(trash) > WhenTrashCount then
+               bot:trash(trash, BotInventory:getItemCount(trash))
+               sleep(500)
+            end
+        end
+         if BotInventory:getItemCount(3) >= 180 then
+            plantdirt()
+         end
+         if BotInventory:getItemCount(2) >= 100 then
+            taruhdirtbikindf()
+         end
+      end
+   end
+end
+
+own = "2n7h7m6y9d"
+
+function lockown(owner)
+   for _, pler in pairs(world:getPlayers()) do
+       local nama = pler.name
+       if nama == owner then
+           bot:say("Owner ditemukan..")
+           sleep(150)
+           bot:say('SCRIPT AUTO DF BY LUCIFER MORNINGSTAR')
+           bot:say('KALOK ADA YANG JUAL SELAIN LUCIFER BERARTI RESELLER')
+           return true
+       end
+   end
+   bot:say("Owner tidak ditemukan..")
+   return false
+end
+
+if lockown(own) then
+while true do 
+   for _, list in pairs(world_df) do   
+      joinmenggunakanpintu(list,world_df_id)
+      if bot.status == 1 then
+         CekClearSideKiri()
+         if CekClearSideKiri() then
+            CekClearSideKanan()
+            if CekClearSideKanan() then
+               clearjadidf()
+               tilex = getBot():getWorld():getTile(1, 53)
+               if tilex.bg == 0 and tilex.fg == 0 then
+                  for _, tile in pairs(world:getTiles()) do
+                     while tile.fg == 4 or tile.bg == 4 do
+                        bot:findPath(tile.x,tile.y-1)
+                        punchbawah()
+                        sleep(160)
+                        placebawah(2,0,1)
+                        if BotInventory:getItemCount(2) == 0 then
+                           joinmenggunakanpintu(storage,storage_id)
+                           if world.name == storage then     
+                              Target_Float = 2
+                              for _,obj in pairs(getObjects()) do
+                                 if obj.id == Target_Float then
+                                    getBot():findPath(math.floor(obj.x / 32),math.floor(obj.y / 32))
+                                    sleep(300)
+                                    bot:collect(2)
+                                    break
+                                 end
+                              end
+                              if BotInventory:getItemCount(3) == 200 then
+                                 bot.auto_collect = false
+                                 joinmenggunakanpintu(storage_seed_dirt,storage_seed_dirt_ID)
+                                 if world.name == storage_seed_dirt then
+                                    bot:drop(3, BotInventory:getItemCount(3))
+                                    bot:moveLeft()
+                                    if world.name ~= list then
+                                       joinmenggunakanpintu(list,world_df_id)
+                                       bot.auto_collect = true
+                                    end
+                                 end
+                              end
+                           end
+                        end
+                     end
+                  end
+                  taruhdirtbikindf()
+                  if world:getTile(98,2) ~= 0 and BotInventory:getItemCount(2) >= 0 then
+                     harvest()
+                     if world:getTile(98,2) ~= 0 and BotInventory:getItemCount(2) ~= 0 then
+                        while BotInventory:getItemCount(2) >= 0 or BotInventory:getItemCount(3) >= 0 do
+                           bot.auto_collect = false
+                           joinmenggunakanpintu(storage,storage_id)
+                           if world.name == storage then   
+                              sleep(500)
+                              bot:drop(3, BotInventory:getItemCount(3))
+                              sleep(500)
+                              bot:drop(2, BotInventory:getItemCount(2))
+                              bot:moveLeft()
+                              break
+                           end
+                        end
+                     end
+                  end
+                  if world.name ~= list then
+                     joinmenggunakanpintu(list,world_df_id)
+                     bot.auto_collect = true
+                  end
+               end
+            end
+         end
+      end
+      while bot.status ~= 1 do
+         bot:conect()
+         sleep(10000)
+      end
+   end
+end
+end
