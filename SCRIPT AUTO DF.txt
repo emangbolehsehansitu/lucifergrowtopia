@@ -641,7 +641,7 @@ function clearjadidf()
    end
 end
 
-own = "2n7h7m6y9d"
+own = "2N7H7M6Y9D"
 
 function lockown(owner)
    for _, pler in pairs(world:getPlayers()) do
